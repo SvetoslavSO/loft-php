@@ -1,11 +1,13 @@
 <?php
-define('TEST_CONSTANTA', 'asd');
+const TEST_CONSTANTA = 'something';
 
-$user_name = 'Igor';
+$userName = 'Igor';
 
-function showSomething () {
+function showSomething ()
+{
     return 'SOMETHING';
-};
+}
 
-if (1==1)
+if (1==1) {
     echo 'hi';
+}

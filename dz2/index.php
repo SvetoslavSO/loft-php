@@ -2,11 +2,11 @@
 
 require 'src/functions.php';
 
-$arrayOfStrings = ['newString1', 'newString2', 'newString1', 'newString1'];
+$strings = ['newString1', 'newString2', 'newString1', 'newString1'];
 
-task1($arrayOfStrings, true);
+task1($strings, true);
 
-task1($arrayOfStrings);
+task1($strings);
 
 task2('+', 1, 2, 3, 4, 5, 6, 7);
 

@@ -1,10 +1,10 @@
 <?php
 
-$my_name = 'Svetoslav';
+$myName = 'Svetoslav';
 
 $age = '20';
 
-echo "Меня зовут: $my_name <br>";
+echo "Меня зовут: $myName <br>";
 
 echo "Мне $age лет <br>";
 

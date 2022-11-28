@@ -1,21 +1,20 @@
 <?php
 
-function task1($stringsArray, $isOneLine = false) {
-    if($isOneLine){
-        foreach ($stringsArray as $value) {
-            $newLine .= $value;
-        }
-        echo $newLine, '<br>';
+function task1($strings, $isOneLine = false) 
+{
+    if ($isOneLine) {
+        echo implode('', $strings), '<br>';
     } else {
-        foreach ($stringsArray as $value) {
+        foreach ($strings as $value) {
             echo '<p>', $value;
         };
         echo '<br>';
     }
 };
 
-function task2($operator, ...$args) {
-    if($operator == '+') {
+function task2($operator, ...$args) 
+{
+    if ($operator == '+') {
         $result = 0;
         foreach ($args as $value) {
             $result += $value;
@@ -36,69 +35,71 @@ function task2($operator, ...$args) {
           $result /= $args[$i];
         }
     };
-    echo $result, '<br>';
+    $expression = implode($operator, $args);
+    echo $expression , '=', $result, '<br>';
 };
 
-function task3 ($firstInt, $secondInt) {
-  if (is_int($firstInt) && is_int($secondInt)) {
-    echo '<table border="1">';
-
-    for ($i=0; $i <= $firstInt; $i++) {
+function task3($firstInt, $secondInt) 
+{
+  if (!is_int($firstInt) || !is_int($secondInt)) {
+    echo 'введены некорректные данные<br>';
+    return;
+  } 
+  echo '<table border="1">';
+  for ($i=0; $i <= $firstInt; $i++) {
       echo '<tr>';
       for ($j=0; $j <= $secondInt; $j++) { 
-        echo '<td>';
-        $new_number = $i * $j;
-        if($i%2 === 0 && $j%2 ===0) {
-          echo $i, 'x', $j, '=', '(', $new_number, ')';  
-        } elseif ($i%2 === 1 && $j%2 ===1) {
-          echo $i, 'x', $j, '=', '[', $new_number, ']';  
-        } else {
-          echo $i, 'x', $j, '=', $new_number;
-        }
+          echo '<td>';
+          $newNumber = $i * $j;
+          if ($i%2 === 0 && $j%2 ===0) {
+              echo $i, 'x', $j, '=', '(', $newNumber, ')';  
+          } elseif ($i%2 === 1 && $j%2 ===1) {
+              echo $i, 'x', $j, '=', '[', $newNumber, ']';  
+          } else {
+              echo $i, 'x', $j, '=', $newNumber;
+          }
       };
       echo '<tr>';
-    };
-  } else {
-    echo 'введены некорректные данные<br>';
   };
+  echo '</table>';
 };
 
-function task4 () {
+function task4() {
     echo date('d.m.y, G:i'), '<br>';
 };
 
-function task5 () {
+function task5() {
     echo strtotime('24.02.2016 00:00:00'), '<br>';
 };
 
-function task6 ($string) {
-  echo str_replace('К', '', $string), '<br>';
+function task6($string) {
+    echo str_replace('К', '', $string), '<br>';
 };
 
 function task7($string, $substr, $desired) {
-  echo str_replace($substr, $desired, $string), '<br>';
+    echo str_replace($substr, $desired, $string), '<br>';
 }
 
 function task8($file) {
-  if(!file_exists($file)) {
+    if (file_exists($file)) {
+        echo 'File exists <br>';
+        return;
+    }
     $fp = fopen($file, 'w');
     fwrite($fp, 'Hello, world');
     fclose($fp);
     echo 'File created <br>';
-  } else {
-    echo 'File exists <br>';
-  }
 }
 
 function task9($file) {
-  if(!file_exists($file)) {
-    $str = 'No such file';
-  } else {
-    $fp = fopen($file, 'r');
-    while(!feof($fp)) {
-      $str .= fgets($fp);
+    if (!file_exists($file)) {
+        $str = 'No such file';
+    } else {
+        $fp = fopen($file, 'r');
+        while(!feof($fp)) {
+            $str .= fgets($fp);
+        }
+        fclose($fp);
     }
-    fclose($fp);
-  }
-  echo $str, '<br>';
+    echo $str, '<br>';
 };
