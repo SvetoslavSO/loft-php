@@ -1,0 +1,33 @@
+<div style="width: 100%">
+  <div style="display: flex; width: 100%; justify-content: space-between">
+    Вы вошли как <?=$this->user->getName();?>
+    <form action="/user/logout">
+      <input type="submit" value="Выйти">
+    </form>
+  </div>
+  <div style='width: 100%; overflow-y: scroll; border: 1px solid black; height: 600px; border-radius: 10px; margin-bottom: 5px; margin-top: 25px'>
+      <?php foreach($this->blog->returnHistory() as $key=>$value): ?>
+        <div>
+            <?=htmlspecialchars($this->blog->getUserName($value['user_id']));?>
+            <?=htmlspecialchars($value['text']);?>
+            <?=htmlspecialchars($value['date']);?>
+            <?php if($value['image'] != null): ?>
+                <img src="/images/<?= $value['image']; ?>">
+            <?php endif;?>
+            <?php if($this->user->getRole()): ?>
+              <form  action="/blog/deleteMessage?id=<?=$value['id'];?>" method="post">
+                <input type="submit" value="удалить" name="id"></input>
+              </form>
+            <?php endif;?>
+        </div>
+      <?php endforeach; ?>
+  </div>
+  <form enctype="multipart/form-data" action="/blog/addMessage" method="post">
+      <input style="width: 100%;" name="messageText" type='text' placeholder="Введите сообщение">
+      добавьте картинку <input name="image" type='file'><br>
+      <input type="submit" value="отправить">
+  </form>
+</div>
+<?php if($this->error): ?>
+    <span style="color: red"><?=$this->error;?><span>
+<?php endif;?>
