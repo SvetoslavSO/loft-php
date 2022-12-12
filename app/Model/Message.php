@@ -35,7 +35,7 @@ class Message extends AbstractModel
     public function getUserMessages ($id)
     {
         $db = Db::getInstance();
-        $insert = "SELECT * FROM `message` WHERE id=:id DESC LIMIT 20";
+        $insert = "SELECT * FROM `message` WHERE user_id=:id ORDER BY `id` DESC LIMIT 20";
         $history = $db->fetchAll($insert, __METHOD__, [
           ':id' => $id
         ]);

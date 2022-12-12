@@ -12,31 +12,18 @@ class Api extends AbstractController
         if (!$userId) {
             return $this->response(['error' => 'no_user_id']);
         }
-        $messages = (Message::getUserMessages($userId));
-        if (!$messages) {
+        $messages = (new Message());
+        $userMessages = $messages->getUserMessages($userId);
+        if (!$userMessages) {
             return $this->response(['error' => 'no_messages']);
         }
-
-        $data = array_map($this->getData($message), $message);
-        echo $data;
-
-        return $this->response(['messages' => $data]);
+        var_dump($userMessages);
+        return $this->response(['messages' => $userMessages]);
     }
 
     public function response(array $data)
     {
         header('Content-type: application/json');
         return json_encode($data);
-    }
-
-    public function getData()
-    {
-        return [
-            'id' => $this->id,
-            'author_id' => $this->authorId,
-            'text' => $this->text,
-            'created_at' => $this->createdAt,
-            'image' => $this->image
-        ];
     }
 }

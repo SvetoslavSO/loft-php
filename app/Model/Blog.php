@@ -12,7 +12,7 @@ class Blog extends AbstractModel
     public function updateHistory()
     {
       $db = Db::getInstance();
-      $insert = "SELECT * FROM `message` ORDER BY 'id' DESC LIMIT 20";
+      $insert = "SELECT * FROM `message` ORDER BY `id` DESC LIMIT 20";
       $history = $db->fetchAll($insert, __METHOD__);
       return $this;
     }
@@ -20,7 +20,7 @@ class Blog extends AbstractModel
     public function getHistory()
     {
         $db = Db::getInstance();
-        $insert = "SELECT * FROM `message` ORDER BY 'id' DESC LIMIT 20";
+        $insert = "SELECT * FROM `message` ORDER BY `id` DESC LIMIT 20";
         $history = $db->fetchAll($insert, __METHOD__);
         $this->history = $history;
         return $this;
