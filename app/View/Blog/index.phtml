@@ -11,7 +11,7 @@
             <?=htmlspecialchars($this->blog->getUserName($value['user_id']));?>
             <?=htmlspecialchars($value['text']);?>
             <?=htmlspecialchars($value['date']);?>
-            <?php if($value['image'] != null): ?>
+            <?php if($value['image'] != ''): ?>
                 <img src="/images/<?= $value['image']; ?>">
             <?php endif;?>
             <?php if($this->user->getRole()): ?>

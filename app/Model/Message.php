@@ -59,12 +59,16 @@ class Message extends AbstractModel
 
     public function loadFile ($file)
     {
-        $this->image = $this->genFileName();
-        if(file_exists($file)){
-            move_uploaded_file(
-                $file,
-                getcwd() . '/images/' . $this->image
-            );
+        if($file == '') {
+            $this->image = '';
+        } else {
+            $this->image = $this->genFileName();
+            if(file_exists($file)){
+                move_uploaded_file(
+                    $file,
+                    getcwd() . '/images/' . $this->image
+                );
+            }
         }
     }
 

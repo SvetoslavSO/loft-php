@@ -32,8 +32,10 @@ class Blog extends AbstractController
           ]);
       } else {
           $message = new Message();
-          if(isset($_FILES['image']['tmp_name'])){
+          if($_FILES['image']['tmp_name']){
               $message->loadFile($_FILES['image']['tmp_name']);
+          } else {
+              $message->loadFile('');
           }
           $message
               ->setText($text)
@@ -53,8 +55,7 @@ class Blog extends AbstractController
       $id = $_GET['id'];
       $message = (new Message())->deleteMessage($id);
       $this->setBlog((new BlogModel())
-          ->getHistory()
-          ->returnHistory());
+          ->getHistory());
       return $this->view->render('Blog/index.phtml', [
         'user' => $this->user,
         'blog' => $this->blog
