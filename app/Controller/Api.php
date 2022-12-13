@@ -17,8 +17,7 @@ class Api extends AbstractController
         if (!$userMessages) {
             return $this->response(['error' => 'no_messages']);
         }
-        var_dump($userMessages);
-        return $this->response(['messages' => $userMessages]);
+        echo $this->response(['messages' => $userMessages]);
     }
 
     public function response(array $data)
