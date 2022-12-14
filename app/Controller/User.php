@@ -16,9 +16,7 @@ class User extends AbstractController
         if ($email) {
             $password = $_POST['password'];
             $user = UserModel::getByEmail($email);
-            if (UserModel::getPasswordHash($password) != UserModel::getPasswordHash($confirmPassword)) {
-              $this->view->assign('error', 'Пароли не совпадают');
-            } else if (!$user) {
+            if (!$user) {
                 $this->view->assign('error', 'Неверный логин или пароль');
             } else {
               if ($user->getPassword() != UserModel::getPasswordHash($password)) {
@@ -41,9 +39,14 @@ class User extends AbstractController
         $name = trim($_POST['name']);
         $gender = UserModel::GENDER_MALE;
         $password = trim($_POST['password']);
+        $confirmPassword = trim($_POST['confirmPassword']);
         $success = true;
 
         if (isset($_POST['email'])) {
+            if (UserModel::getPasswordHash($password) != UserModel::getPasswordHash($confirmPassword)) {
+                $this->view->assign('error', 'Пароли не совпадают');
+                $success = false;
+            }
             if (!$email) {
                 $this->view->assign('error', 'Email не может быть пустым');
                 $success = false;

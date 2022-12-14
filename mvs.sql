@@ -33,7 +33,7 @@ CREATE TABLE `message` (
   `date` datetime NOT NULL,
   `user_id` int NOT NULL,
   `image` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `message`
@@ -68,7 +68,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `gender` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `users`

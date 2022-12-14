@@ -44,9 +44,9 @@ class Application
     private function addRoutes()
     {
       $this->route->addRoute('/user/login', \App\Controller\User::class, 'login');
-      // $this->route->addRoute('/user/register', \App\Controller\User::class, 'register');
-      // $this->route->addRoute('/blog', \App\Controller\Blog::class, 'index');
-      // $this->route->addRoute('/blog/index', \App\Controller\Blog::class, 'index');
+      $this->route->addRoute('/user/register', \App\Controller\User::class, 'register');
+      $this->route->addRoute('/blog', \App\Controller\Blog::class, 'index');
+      $this->route->addRoute('/blog/index', \App\Controller\Blog::class, 'index');
     }
 
     private function initUser()
