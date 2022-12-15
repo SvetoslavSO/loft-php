@@ -1,0 +1,16 @@
+<?php
+$user = $this->user;
+?>
+
+<?php if($user): ?>
+    name: <?= $user->getName(); ?> <br>
+    gender: <?= $user->getGenderInString(); ?> <br>
+    registrated: <?= $user->getCreatedAt(); ?> <br>
+    <?php if($user->getRole()): ?>
+        is admin? Yes
+    <?php else: ?>
+        is admin? No
+    <?php endif;?>
+<?php else: ?>
+    Пользователь не найден
+<?php endif; ?>
