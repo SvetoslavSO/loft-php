@@ -11,7 +11,7 @@ class User extends AbstractModel
     const GENDER_FEMALE = 2;
 
     private $id;
-    private $name;
+    public $name;
     private $password;
     private $createdAt;
     private $gender;

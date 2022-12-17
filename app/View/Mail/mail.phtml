@@ -1,0 +1,9 @@
+<div style="width: 100%">
+  <div>
+    Вы вошли как <?=$this->user->getName();?>
+    <form action="/mail/send" method="post">
+      <input type="text" name="mailText">
+      <input type="submit" value="Отправить письмо">
+    </form>
+  </div>
+</div>

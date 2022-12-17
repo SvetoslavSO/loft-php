@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Core\AbstractModel;
 use Core\Db;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class Message extends AbstractModel
 {
@@ -63,13 +64,29 @@ class Message extends AbstractModel
             $this->image = '';
         } else {
             $this->image = $this->genFileName();
-            if(file_exists($file)){
-                move_uploaded_file(
-                    $file,
-                    getcwd() . '/images/' . $this->image
-                );
-            }
+            $image = Image::make($file)
+                    ->resize(null, 400, function($image) {
+                    $image->aspectRatio();
+                });
+            $this->addWaterMark($image);
+            $image->save(getcwd() . '/images/' . $this->image);
         }
+    }
+
+    function addWaterMark ($file) 
+    {
+        $file->text(
+            "myPhpProject",
+            5,
+            15,
+            function ($font) {
+                $font->file(getcwd() . '/fonts/' . 'arial.ttf')->size('24');
+                $font->color(array(255, 0, 0, 0.5));
+                $font->align('left');
+                $font->valign('top'); 
+            }
+        );
+        return $file;
     }
 
     public function genFileName ()

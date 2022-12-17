@@ -30,7 +30,7 @@ class View
         $this->data[$name] = $value;
     }
 
-    public function render(string $tpl, $data= []) :string
+    public function render(string $tpl, $data= [])
     {
         switch ($this->renderType) {
             case self::RENDER_TYPE_NATIVE:
@@ -45,9 +45,7 @@ class View
             case self::RENDER_TYPE_TWIG:
                     $this->data += $data;
                     $twig = $this->getTwig($tpl);
-                    ob_start(null, null, PHP_OUTPUT_HANDLER_STDFLAGS);
                     echo $twig->render($tpl, $this->data);
-                    return ob_get_clean();
                 break;
         }
     }
@@ -55,12 +53,9 @@ class View
     public function getTwig($tpl)
     {
         if (!$this->twig) {
-            echo $this->templatePath, '<br>';
-            $path = $this->templatePath . DIRECTORY_SEPARATOR . $tpl;
-            // C:\OSPanel\domains\dz-4week\src\..\app/View\Blog/index.twig
-            echo $path, '<br>';
+            $path = $this->templatePath . DIRECTORY_SEPARATOR;
             $loader = new \Twig\Loader\FilesystemLoader($path);
-            $this->twig = new \Twig\Enviroment($loader);
+            $this->twig = new \Twig\Environment($loader);
         }
         return $this->twig;
     }
