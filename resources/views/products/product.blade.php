@@ -22,43 +22,26 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if (!$admin)
-              <form action="{{ route('buyProduct', [ $category, $product[0]['name']])}}">
-                <div class="panel panel-default">
-                  <div class="panel-heading">Product</div>
-                </div>
-                <div class="photo">
-                  <img style="display: block; width: auto; height: auto; max-width: 100%; width: 200px" src="/resources/images/products/{{$product[0]['photo']}}">
-                </div>
-                <div class="name">
-                  Название: {{$product[0]['name']}}
-                </div>
-                <div class="desc">
-                  Описание: {{$product[0]['description']}}
-                </div>
-                <div class="price">
-                  Цена: {{$product[0]['price']}}
-                </div>
-                <button type="submit">Купить</button>
-              </form>
-            @endif
+            <form action="{{ route('buyProduct', [ $category, $product[0]['name']])}}">
+              <div class="panel panel-default">
+                <div class="panel-heading">Product</div>
+              </div>
+              <div class="photo">
+                <img style="display: block; width: auto; height: auto; max-width: 100%; width: 200px" src="/resources/images/products/{{$product[0]['photo']}}">
+              </div>
+              <div class="name">
+                Название: {{$product[0]['name']}}
+              </div>
+              <div class="desc">
+                Описание: {{$product[0]['description']}}
+              </div>
+              <div class="price">
+                Цена: {{$product[0]['price']}}
+              </div>
+              <button type="submit">Купить</button>
+            </form>
             @if ($admin)
               <form action="{{ route('deleteProduct', [ $category, $product[0]['name']])}}">
-                <div class="panel panel-default">
-                  <div class="panel-heading">Product</div>
-                </div>
-                <div class="photo">
-                  <img style="display: block; width: auto; height: auto; max-width: 100%; width: 200px" src="/resources/images/products/{{$product[0]['photo']}}">
-                </div>
-                <div class="name">
-                  Название: {{$product[0]['name']}}
-                </div>
-                <div class="desc">
-                  Описание: {{$product[0]['description']}}
-                </div>
-                <div class="price">
-                  Цена: {{$product[0]['price']}}
-                </div>
                 <button type="submit">Удалить</button>
               </form>
             @endif
