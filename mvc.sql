@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 17 2022 г., 19:50
+-- Время создания: Дек 25 2022 г., 19:46
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -64,7 +64,11 @@ INSERT INTO `message` (`id`, `text`, `date`, `user_id`, `image`) VALUES
 (123, 'Привет, я никита', '2022-12-17 15:57:18', 9, '5813d9d924a0360aa638ad8a636875059816a2bd.png'),
 (124, 'Привет, я никита', '2022-12-17 15:58:05', 9, 'bce62284362dba3d43853e4db922dcd4ce702e53.png'),
 (125, 'Привет, я никита', '2022-12-17 16:02:11', 9, 'c9ca7e2c78135a412ab9c440784bbb9e4432d870.png'),
-(126, 'Привет, я никита', '2022-12-17 16:02:49', 9, 'b82f70b586faa2b51655bb990c95fe3b5626e977.png');
+(126, 'Привет, я никита', '2022-12-17 16:02:49', 9, 'b82f70b586faa2b51655bb990c95fe3b5626e977.png'),
+(127, 'Фен', '2022-12-21 13:34:32', 11, '03b57d01d72e241d850f70ebef2316c1b18864b8.png'),
+(128, 'привет', '2022-12-25 19:40:45', 27, ''),
+(129, 'привет', '2022-12-25 19:42:34', 27, ''),
+(130, 'Ghbdtn', '2022-12-25 19:42:52', 27, '0864fd1b51692bb90dd3fc2134a4ef269077a444.png');
 
 -- --------------------------------------------------------
 
@@ -88,7 +92,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `gender`, `created_at`) VALUES
 (9, '1234', '1234@mail.com', '9c9f3b848b62fd4342b19afb2f8b11640218a5b2', 1, '2022-12-11 16:12:36'),
 (10, '12345', '12345@mail.com', 'b27e2d33a4bcb2070210734adae508162cf2eaed', 1, '2022-12-13 17:12:49'),
-(11, '123456', '123456@mail.com', 'afcc2e956c024c2e5ad4fdc78456b022af42b018', 1, '2022-12-14 14:12:36');
+(11, '123456', '123456@mail.com', 'afcc2e956c024c2e5ad4fdc78456b022af42b018', 1, '2022-12-14 14:12:36'),
+(15, 'my new name', 'myNewEmail@mail.com', '0506041a3d784a68c849d25d3db3ccdb5b1ac65f', 1, '0000-00-00 00:00:00'),
+(16, 'my email', 'myEmail@mail.com', 'ee253436d1f86db0a34303b78162697116399dc1', 1, '2022-12-25 19:12:55'),
+(27, 'my Another email', 'myAnotherEmail@mail.com', 'a328bc9d5027e398b59b35625469d99ad8a361c8', 1, '2022-12-25 19:12:36');
 
 --
 -- Индексы сохранённых таблиц
@@ -115,13 +122,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
