@@ -1,14 +1,14 @@
 <div style="width: 100%">
   <div style="display: flex; width: 100%; justify-content: space-between">
-    Вы вошли как <?=$this->user->getName();?>
+    Вы вошли как <?=$this->user->name;?>
     <form action="/user/logout">
       <input type="submit" value="Выйти">
     </form>
   </div>
   <div style='width: 100%; overflow-y: scroll; border: 1px solid black; height: 600px; border-radius: 10px; margin-bottom: 5px; margin-top: 25px'>
-      <?php foreach($this->blog->returnHistory() as $key=>$value): ?>
+      <?php foreach($this->blog->returnHistory() as $value): ?>
         <div>
-            <?=htmlspecialchars($this->blog->getUserName($value['user_id']));?>
+            <?=$this->user->getUserNameById($value['user_id']);?>
             <?=htmlspecialchars($value['text']);?>
             <?=htmlspecialchars($value['date']);?>
             <?php if($value['image'] != ''): ?>

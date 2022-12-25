@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Core\AbstractController;
-use App\Model\User as UserModel;
+use App\Model\Eloquent\User as UserModel;
 
 class User extends AbstractController
 {
@@ -19,10 +19,10 @@ class User extends AbstractController
             if (!$user) {
                 $this->view->assign('error', 'Неверный логин или пароль');
             } else {
-              if ($user->getPassword() != UserModel::getPasswordHash($password)) {
+              if ($user->password != UserModel::getPasswordHash($password)) {
                   $this->view->assign('error', 'Неверный логин или пароль');
               } else {
-                $_SESSION['id'] = $user->getId();
+                $_SESSION['id'] = $user->id;
                 $this->redirect('/blog/index');
               }
             }
@@ -75,15 +75,15 @@ class User extends AbstractController
             }
           
             if ($success) {
-                $user = (new UserModel())
-                    ->setName($name)
-                    ->setGender($gender)
-                    ->setEmail($email)
-                    ->setPassword(UserModel::getPasswordHash($password));
-            
+                var_dump($name);
+                $user = new UserModel;
+                $user->name = $name;
+                $user->gender = $gender;
+                $user->email = $email;
+                $user->password = UserModel::getPasswordHash($password);
+                $user->created_at = date("Y-m-d H:m:s");
                 $user->save();
-            
-                $_SESSION['id'] = $user->getId();
+                $_SESSION['id'] = $user->id;
                 $this->setUser($user);
             
                 $this->redirect('/blog/index');

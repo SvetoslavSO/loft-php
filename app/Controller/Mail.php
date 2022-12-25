@@ -3,7 +3,6 @@
 // login php-loft@mail.ru
 // password 1qsz3A1ta4gx_O
 // application password i57eUn7PWju9dKhkv89g
-// write a mail controller that will send a mail from route mail/index(?)
 
 namespace App\Controller;
 

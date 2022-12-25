@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Core\AbstractController;
-use App\Model\Message;
+use App\Model\Eloquent\Blog as Message;
 use App\Model\Blog as BlogModel;
 use App\Model\User;
 use Core\View as View;
@@ -15,9 +15,8 @@ class Blog extends AbstractController
       if(!$this->user) {
          $this->redirect('/user/register');
       }
-      $this->view->setRenderType(View::RENDER_TYPE_TWIG);
 
-      return $this->view->render('Blog/index.twig', [
+      return $this->view->render('Blog/index.phtml', [
         'user' => $this->user,
         'blog' => $this->blog
       ]);
@@ -34,16 +33,16 @@ class Blog extends AbstractController
           ]);
       } else {
           $message = new Message();
+          $message->text = $text;
+          $message->date = date("Y-m-d H:i:s");
+          $message->user_id = $_SESSION['id'];
           if($_FILES['image']['tmp_name']){
               $message->loadFile($_FILES['image']['tmp_name']);
           } else {
               $message->loadFile('');
           }
-          $message
-              ->setText($text)
-              ->setId()
-              ->save();
-          $this->setBlog((new BlogModel())
+          $message->save();
+          $this->setBlog((new Message())
               ->getHistory());
           return $this->view->render('Blog/index.phtml', [
             'user' => $this->user,
@@ -56,7 +55,7 @@ class Blog extends AbstractController
   {
       $id = $_GET['id'];
       $message = (new Message())->deleteMessage($id);
-      $this->setBlog((new BlogModel())
+      $this->setBlog((new Message())
           ->getHistory());
       return $this->view->render('Blog/index.phtml', [
         'user' => $this->user,

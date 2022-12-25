@@ -4,8 +4,8 @@ namespace Core;
 
 use App\Controller\User;
 use App\Controller\Blog;
-use App\Model\User as UserModel;
-use App\Model\Blog as BlogModel;
+use App\Model\Eloquent\User as UserModel;
+use App\Model\Eloquent\Blog as BlogModel;
 
 class Application
 {
